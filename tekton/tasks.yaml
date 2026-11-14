@@ -114,6 +114,7 @@ spec:
       script: |
         #!/bin/sh
         set -eu
+        git config --global --add safe.directory '*'
         echo "Cloning $(params.url) branch $(params.revision) ..."
         git clone --depth 1 --branch "$(params.revision)" "$(params.url)" .
         git log -1 --oneline
