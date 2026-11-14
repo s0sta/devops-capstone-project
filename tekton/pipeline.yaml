@@ -89,10 +89,11 @@ spec:
       - name: SCRIPT
         value: |
           echo "Updating manifest..."
-          sed -i "s|IMAGE_NAME_HERE|$(params.build-image)|g" deploy/deployment.yaml
-          cat deploy/deployment.yaml
+          sed "s|IMAGE_NAME_HERE|$(params.build-image)|g" deploy/deployment.yaml > /tmp/deployment.yaml
+          cat /tmp/deployment.yaml
           echo "Deploying to OpenShift..."
-          oc apply -f deploy/
+          oc apply -f /tmp/deployment.yaml
+          oc apply -f deploy/service.yaml
           oc get pods -l app=accounts
       runAfter:
         - build
