@@ -1,7 +1,5 @@
 #
-# This pipeline needs the following tasks from Tekton Catalog
-#   - git-clone
-#   - flake8
+# This pipeline uses the git-clone and flake8 tasks from tekton/tasks.yaml
 #
 ---
 apiVersion: tekton.dev/v1beta1
